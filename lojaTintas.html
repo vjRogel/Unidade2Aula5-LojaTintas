@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Loja de tintas</title>
+
+    <script>
+        
+        const area = Number(prompt("Digite a área em m² a ser pintada"))
+        let litros = ((area/3) * 1.1).toFixed(2)
+        let latas = litros / 18
+        let galoes = litros / 3.6
+
+        if (litros % 18 != 0 ) {
+            latas++
+            latas = parseInt(latas)
+        } 
+
+        const valorLatas = (latas * 80).toFixed(2)
+
+        if ((litros * 100) % 360 != 0) {
+            galoes++
+            galoes = parseInt(galoes)
+        }
+
+       const valorGaloes = (galoes * 25).toFixed(2)
+
+       let misturaLatas = parseInt(litros/18)
+       let diferencaLitros = (litros - (misturaLatas * 18)).toFixed(2)
+       let misturaGaloes = parseInt(diferencaLitros / 3.6)
+
+       if ((diferencaLitros * 100) % 360 !=0 ) {
+        misturaGaloes++
+       }
+
+       const valorMistura = (misturaLatas * 80) + (misturaGaloes * 25)
+       
+       document.write("<br>Área = " + area + "m²<br>" )
+       document.write("<br>Litros de tinta(+10%) = " + litros +" litros<br>")
+       document.write("<br>Apenas latas de 18 litros: " + latas + " latas  " + " | Preço R$ " + valorLatas + "<br>")
+       document.write("<br>Apenas galões de 3,6 litros: " + galoes + " galões  " +" | Preço R$ " + valorGaloes + "<br>")
+
+       if (valorMistura < valorLatas && valorMistura < valorGaloes) {
+        document.write("<br>Melhor preço R$ " + valorMistura + " | Qtd latas: " + misturaLatas + " | Qtd galões: " + misturaGaloes)
+       } else if (valorLatas < valorGaloes) {
+        document.write("<br>Melhor preço R$ " + valorLatas + " | Qtd latas: " + latas + " | Qtd galões: 0 ")
+       } else {
+        document.write("<br>Melhor preço R$ " + valorGaloes + " | Qtd latas: 0 " + " | Qtd galões: " + galoes)
+       }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
